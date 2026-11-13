@@ -1,0 +1,379 @@
+
+* {
+  box-sizing: border-box;
+}
+
+.gallery-page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 28px 5%;
+  background: #fff8fb;
+  color: #70495b;
+  overflow-x: hidden;
+}
+
+.gallery-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #f2dce6;
+}
+
+.gallery-logo {
+  color: #a75f80;
+  font-size: 22px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.gallery-home-link {
+  color: #b77e98;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.gallery-heading {
+  padding: 55px 0 40px;
+  text-align: center;
+}
+
+.gallery-heading > p {
+  color: #d18aa9;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.gallery-heading h1 {
+  margin: 12px 0;
+  font-size: 32px;
+}
+
+.gallery-heading > span {
+  color: #a98b99;
+  font-size: 14px;
+}
+
+.gallery-content {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.gallery-count {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 22px;
+}
+
+.gallery-count h2 {
+  font-size: 20px;
+}
+
+.gallery-count span {
+  color: #b98da2;
+  font-size: 13px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.gallery-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #f1dce6;
+  border-radius: 18px;
+  background: white;
+  transition: 0.2s;
+}
+
+.gallery-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px #e9c8d633;
+}
+
+.gallery-preview {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background-color: #ffffff;
+  background-image: radial-gradient(#f5dfe8 0.8px, transparent 0.8px);
+  background-size: 20px 20px;
+}
+
+.gallery-sticker {
+  position: absolute;
+  font-size: 32px;
+  transform: translate(-50%, -50%);
+}
+
+.gallery-card-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 16px;
+}
+
+.gallery-card-info h3 {
+  margin-bottom: 5px;
+  font-size: 15px;
+}
+
+.gallery-card-info p {
+  color: #b99ba9;
+  font-size: 11px;
+}
+
+.gallery-card-actions {
+  display: flex;
+  flex-shrink: 0;
+  gap: 6px;
+}
+
+.gallery-card-actions button {
+  padding: 8px 12px;
+  border: 1px solid #f0d8e3;
+  border-radius: 18px;
+  background: #fff6fa;
+  color: #a75f80;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.gallery-card-actions .gallery-delete {
+  background: white;
+  color: #a98b99;
+}
+
+.gallery-empty {
+  padding: 70px 20px;
+  border: 1px dashed #eacbd9;
+  border-radius: 20px;
+  background: white;
+  text-align: center;
+}
+
+.gallery-empty > span {
+  font-size: 45px;
+}
+
+.gallery-empty h3 {
+  margin: 15px 0 8px;
+}
+
+.gallery-empty p {
+  color: #a98b99;
+  font-size: 13px;
+}
+
+.gallery-empty a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 22px;
+  border-radius: 22px;
+  background: #eebbd0;
+  color: white;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+/* 태블릿 */
+@media (min-width: 521px) and (max-width: 900px) {
+  .gallery-page {
+    padding: 25px 5%;
+  }
+
+  .gallery-heading {
+    padding: 42px 0 32px;
+  }
+
+  .gallery-heading h1 {
+    font-size: 29px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .gallery-preview {
+    height: 210px;
+  }
+
+  .gallery-card-info {
+    padding: 14px;
+  }
+
+  .gallery-card-info h3 {
+    font-size: 14px;
+  }
+
+  .gallery-card-actions button {
+    padding: 7px 10px;
+    font-size: 10px;
+  }
+}
+
+/* 모바일 */
+
+/* 모바일 */
+@media (max-width: 520px) {
+  .gallery-page {
+    padding: 18px 5% 40px;
+  }
+
+  .gallery-header {
+    gap: 10px;
+    padding-bottom: 17px;
+  }
+
+  .gallery-logo {
+    font-size: 18px;
+  }
+
+  .gallery-home-link {
+    font-size: 11px;
+  }
+
+  .gallery-heading {
+    padding: 32px 0 25px;
+  }
+
+  .gallery-heading > p {
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+
+  .gallery-heading h1 {
+    margin: 10px 0;
+    font-size: 25px;
+  }
+
+  .gallery-heading > span {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .gallery-count {
+    gap: 8px;
+    margin-bottom: 17px;
+  }
+
+  .gallery-count h2 {
+    font-size: 17px;
+  }
+
+  .gallery-count span {
+    font-size: 11px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .gallery-card {
+    border-radius: 16px;
+  }
+
+  .gallery-preview {
+    height: 210px;
+    background-size: 18px 18px;
+  }
+
+  .gallery-sticker {
+    font-size: 29px;
+  }
+
+  .gallery-card-info {
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .gallery-card-info > div:first-child {
+    min-width: 0;
+  }
+
+  .gallery-card-info h3 {
+    font-size: 13px;
+    overflow-wrap: anywhere;
+  }
+
+  .gallery-card-info p {
+    font-size: 10px;
+  }
+
+  .gallery-card-actions {
+    gap: 5px;
+  }
+
+  .gallery-card-actions button {
+    padding: 7px 9px;
+    font-size: 10px;
+    white-space: nowrap;
+  }
+
+  .gallery-empty {
+    padding: 48px 15px;
+    border-radius: 16px;
+  }
+
+  .gallery-empty > span {
+    font-size: 38px;
+  }
+
+  .gallery-empty h3 {
+    font-size: 16px;
+  }
+
+  .gallery-empty p {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .gallery-empty a {
+    padding: 11px 19px;
+    font-size: 12px;
+  }
+}
+
+/* 작은 모바일 */
+@media (max-width: 360px) {
+  .gallery-logo {
+    font-size: 16px;
+  }
+
+  .gallery-home-link {
+    font-size: 10px;
+  }
+
+  .gallery-heading h1 {
+    font-size: 22px;
+  }
+
+  .gallery-preview {
+    height: 190px;
+  }
+
+  .gallery-card-info {
+    flex-wrap: wrap;
+  }
+
+  .gallery-card-actions {
+    width: 100%;
+  }
+
+  .gallery-card-actions button {
+    flex: 1;
+  }
+}

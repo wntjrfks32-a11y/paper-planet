@@ -1,0 +1,526 @@
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.decorate-page {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 28px 5%;
+  background: #fff8fb;
+  color: #70495b;
+  overflow-x: hidden;
+}
+
+.decorate-header {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #f2dce6;
+}
+
+.decorate-logo {
+  color: #a75f80;
+  font-size: 22px;
+  font-weight: 800;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+.decorate-header-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.decorate-header-links a {
+  color: #a75f80;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.decorate-header span {
+  color: #bd91a5;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.decorate-heading {
+  width: 100%;
+  padding: 48px 0 35px;
+  text-align: center;
+}
+
+.decorate-heading > p {
+  color: #d18aa9;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.decorate-heading h1 {
+  margin: 12px 0;
+  color: #754b60;
+  font-size: 32px;
+}
+
+.decorate-heading > span {
+  color: #a98b99;
+  font-size: 14px;
+}
+
+.editor-layout {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  gap: 25px;
+  width: 100%;
+  min-width: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.sticker-palette {
+  min-width: 0;
+  padding: 24px;
+  border: 1px solid #f2dce6;
+  border-radius: 20px;
+  background: #ffffff;
+}
+
+.sticker-palette h2 {
+  margin: 0 0 8px;
+  color: #a75f80;
+  font-size: 20px;
+}
+
+.sticker-palette p {
+  margin-bottom: 20px;
+  color: #ad929e;
+  font-size: 12px;
+}
+
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.palette-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1;
+  border: 1px solid #f5e2eb;
+  border-radius: 12px;
+  background: #fff7fa;
+  font-size: 25px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.palette-item:hover {
+  background: #fce5ef;
+  transform: translateY(-3px);
+}
+
+.canvas-area {
+  min-width: 0;
+  width: 100%;
+}
+
+.canvas-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.canvas-top > span {
+  color: #a75f80;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.canvas-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.canvas-actions button {
+  padding: 9px 14px;
+  border: 1px solid #f0d8e3;
+  border-radius: 20px;
+  background: #ffffff;
+  color: #b77e98;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.canvas-actions button:hover {
+  background: #f9e3ed;
+}
+
+.paper-canvas {
+  position: relative;
+  width: 100%;
+  min-height: 580px;
+  overflow: hidden;
+  border: 1px solid #efd8e3;
+  border-radius: 18px;
+  background-color: #ffffff;
+  background-image: radial-gradient(#f5dfe8 0.8px, transparent 0.8px);
+  background-size: 20px 20px;
+  box-shadow: 0 8px 25px rgba(180, 120, 150, 0.08);
+}
+
+.canvas-empty {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  transform: translate(-50%, -50%);
+  color: #c39aab;
+  text-align: center;
+  pointer-events: none;
+}
+
+.canvas-empty span {
+  font-size: 45px;
+}
+
+.canvas-empty p {
+  margin: 12px 0 6px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.canvas-empty small {
+  font-size: 12px;
+}
+
+.placed-sticker {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.placed-sticker > span {
+  font-size: 42px;
+  line-height: 1;
+}
+
+.placed-sticker.dragging {
+  z-index: 5;
+  cursor: grabbing;
+}
+
+.remove-sticker {
+  position: absolute;
+  top: -12px;
+  right: -16px;
+  width: 21px;
+  height: 21px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #f5dce7;
+  color: #a75f80;
+  font-size: 15px;
+  line-height: 21px;
+  cursor: pointer;
+}
+
+.save-message {
+  margin-top: 14px;
+  color: #d17e9e;
+  font-size: 13px;
+  text-align: right;
+}
+
+/* 태블릿 */
+@media (min-width: 501px) and (max-width: 900px) {
+  .decorate-page {
+    padding: 25px 4%;
+  }
+
+  .decorate-header {
+    padding-bottom: 18px;
+  }
+
+  .decorate-logo {
+    font-size: 20px;
+  }
+
+  .decorate-header-links {
+    gap: 14px;
+  }
+
+  .decorate-header-links a {
+    font-size: 12px;
+  }
+
+  .decorate-header-links span {
+    font-size: 10px;
+  }
+
+  .decorate-heading {
+    padding: 35px 0 28px;
+  }
+
+  .decorate-heading h1 {
+    font-size: 28px;
+  }
+
+  .editor-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  .sticker-palette {
+    padding: 20px;
+  }
+
+  .sticker-palette p {
+    margin-bottom: 15px;
+  }
+
+  .palette-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .palette-item {
+    max-width: 90px;
+    width: 100%;
+    justify-self: center;
+    font-size: 28px;
+  }
+
+  .canvas-top {
+    align-items: center;
+  }
+
+  .canvas-actions {
+    gap: 7px;
+  }
+
+  .canvas-actions button {
+    padding: 9px 12px;
+    font-size: 11px;
+  }
+
+  .paper-canvas {
+    min-height: 520px;
+  }
+}
+
+/* 모바일 */
+
+/* 모바일 */
+@media (max-width: 500px) {
+  .decorate-page {
+    padding: 18px 4%;
+  }
+
+  .decorate-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .decorate-logo {
+    font-size: 18px;
+  }
+
+  .decorate-header-links {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 12px;
+  }
+
+  .decorate-header-links a {
+    font-size: 11px;
+  }
+
+  .decorate-header-links span {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+
+  .decorate-heading {
+    padding: 30px 0 22px;
+  }
+
+  .decorate-heading > p {
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+
+  .decorate-heading h1 {
+    font-size: 22px;
+  }
+
+  .decorate-heading > span {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .editor-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .sticker-palette {
+    padding: 15px;
+    border-radius: 16px;
+  }
+
+  .sticker-palette h2 {
+    font-size: 18px;
+  }
+
+  .sticker-palette p {
+    margin-bottom: 14px;
+    font-size: 11px;
+  }
+
+  .palette-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .palette-item {
+    min-width: 0;
+    font-size: 22px;
+    border-radius: 10px;
+  }
+
+  .canvas-top {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .canvas-top > span {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+  }
+
+  .canvas-actions {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+
+  .canvas-actions button {
+    padding: 9px 11px;
+    font-size: 10px;
+  }
+
+  .paper-canvas {
+    min-height: 450px;
+    border-radius: 14px;
+    background-size: 18px 18px;
+  }
+
+  .canvas-empty span {
+    font-size: 38px;
+  }
+
+  .canvas-empty p {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .canvas-empty small {
+    font-size: 10px;
+    line-height: 1.6;
+  }
+
+  .placed-sticker > span {
+    font-size: 36px;
+  }
+
+  .remove-sticker {
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .save-message {
+    font-size: 11px;
+    line-height: 1.6;
+  }
+}
+
+/* 작은 모바일 */
+@media (max-width: 360px) {
+  .decorate-heading h1 {
+    font-size: 20px;
+  }
+
+  .decorate-header-links {
+    gap: 9px;
+  }
+
+  .decorate-header-links a {
+    font-size: 10px;
+  }
+
+  .palette-grid {
+    gap: 6px;
+  }
+
+  .palette-item {
+    font-size: 19px;
+  }
+
+  .canvas-actions {
+    gap: 5px;
+  }
+
+  .canvas-actions button {
+    padding: 8px 9px;
+    font-size: 9px;
+  }
+
+  .paper-canvas {
+    min-height: 400px;
+  }
+
+  .placed-sticker > span {
+    font-size: 32px;
+  }
+}
